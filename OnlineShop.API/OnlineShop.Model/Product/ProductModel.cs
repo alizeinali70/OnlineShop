@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace OnlineShop.Domain.Entities.Product
+{
+    [Table("T_ProductModel")]
+    public class ProductModel
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Display(Name = "ردیف")]
+        public int ID { get; set; }
+        [Display(Name = "نوع محصول")]
+        public string Name { get; set; }
+        [Display(Name = "توضیحات")]
+        public string? Description_Type { get; set; }
+        public ICollection<Product> products { get; set; } = new HashSet<Product>();
+        [Display(Name = "فعال / غیرفعال")]
+        public bool Is_Active { get; set; }
+    }
+}
