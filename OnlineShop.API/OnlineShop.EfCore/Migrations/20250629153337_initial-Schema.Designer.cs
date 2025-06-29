@@ -12,7 +12,7 @@ using OnlineShop.Infrastructure.EfCore;
 namespace OnlineShop.Infrastructure.EfCore.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250629133335_initial-Schema")]
+    [Migration("20250629153337_initial-Schema")]
     partial class initialSchema
     {
         /// <inheritdoc />
@@ -25,7 +25,72 @@ namespace OnlineShop.Infrastructure.EfCore.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("OnlineShop.Domain.Entities.Product.Product", b =>
+            modelBuilder.Entity("OnlineShop.Domain.Entities.ProductEntity.ProductCategory", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<bool>("Is_Active")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("T_ProductCategory");
+                });
+
+            modelBuilder.Entity("OnlineShop.Domain.Entities.ProductEntity.ProductImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("T_ProductImage");
+                });
+
+            modelBuilder.Entity("OnlineShop.Domain.Entities.ProductEntity.ProductModel", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("Description_Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Is_Active")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("T_ProductModel");
+                });
+
+            modelBuilder.Entity("OnlineShop.Domain.Entities.ProductEntity.ProductUnit", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -119,71 +184,6 @@ namespace OnlineShop.Infrastructure.EfCore.Migrations
                     b.HasIndex("ModelId");
 
                     b.ToTable("T_Product");
-                });
-
-            modelBuilder.Entity("OnlineShop.Domain.Entities.Product.ProductCategory", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
-
-                    b.Property<bool>("Is_Active")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("T_ProductCategory");
-                });
-
-            modelBuilder.Entity("OnlineShop.Domain.Entities.Product.ProductImage", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("T_ProductImage");
-                });
-
-            modelBuilder.Entity("OnlineShop.Domain.Entities.Product.ProductModel", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
-
-                    b.Property<string>("Description_Type")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("Is_Active")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("T_ProductModel");
                 });
 
             modelBuilder.Entity("OnlineShop.Domain.Entities.User.Role", b =>
@@ -303,15 +303,26 @@ namespace OnlineShop.Infrastructure.EfCore.Migrations
                     b.ToTable("T_SpecialMember");
                 });
 
-            modelBuilder.Entity("OnlineShop.Domain.Entities.Product.Product", b =>
+            modelBuilder.Entity("OnlineShop.Domain.Entities.ProductEntity.ProductImage", b =>
                 {
-                    b.HasOne("OnlineShop.Domain.Entities.Product.ProductCategory", "ProductsCategory")
+                    b.HasOne("OnlineShop.Domain.Entities.ProductEntity.ProductUnit", "Product")
+                        .WithMany("Images")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("OnlineShop.Domain.Entities.ProductEntity.ProductUnit", b =>
+                {
+                    b.HasOne("OnlineShop.Domain.Entities.ProductEntity.ProductCategory", "ProductsCategory")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OnlineShop.Domain.Entities.Product.ProductModel", "ProductsModel")
+                    b.HasOne("OnlineShop.Domain.Entities.ProductEntity.ProductModel", "ProductsModel")
                         .WithMany("products")
                         .HasForeignKey("ModelId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -320,17 +331,6 @@ namespace OnlineShop.Infrastructure.EfCore.Migrations
                     b.Navigation("ProductsCategory");
 
                     b.Navigation("ProductsModel");
-                });
-
-            modelBuilder.Entity("OnlineShop.Domain.Entities.Product.ProductImage", b =>
-                {
-                    b.HasOne("OnlineShop.Domain.Entities.Product.Product", "Product")
-                        .WithMany("Images")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("OnlineShop.Domain.Entities.User.SpecialMember", b =>
@@ -344,19 +344,19 @@ namespace OnlineShop.Infrastructure.EfCore.Migrations
                     b.Navigation("Permission");
                 });
 
-            modelBuilder.Entity("OnlineShop.Domain.Entities.Product.Product", b =>
-                {
-                    b.Navigation("Images");
-                });
-
-            modelBuilder.Entity("OnlineShop.Domain.Entities.Product.ProductCategory", b =>
+            modelBuilder.Entity("OnlineShop.Domain.Entities.ProductEntity.ProductCategory", b =>
                 {
                     b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("OnlineShop.Domain.Entities.Product.ProductModel", b =>
+            modelBuilder.Entity("OnlineShop.Domain.Entities.ProductEntity.ProductModel", b =>
                 {
                     b.Navigation("products");
+                });
+
+            modelBuilder.Entity("OnlineShop.Domain.Entities.ProductEntity.ProductUnit", b =>
+                {
+                    b.Navigation("Images");
                 });
 
             modelBuilder.Entity("OnlineShop.Domain.Entities.User.Role", b =>

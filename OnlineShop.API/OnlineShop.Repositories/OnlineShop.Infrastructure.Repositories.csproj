@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OnlineShop.EfCore\OnlineShop.Infrastructure.EfCore.csproj" />
+    <ProjectReference Include="..\OnlineShop.Interfaces\OnlineShop.Application.Interfaces.csproj" />
+  </ItemGroup>
+
 </Project>

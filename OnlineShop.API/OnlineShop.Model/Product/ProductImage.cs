@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnlineShop.Domain.Entities.Product
+namespace OnlineShop.Domain.Entities.ProductEntity
 {
     [Table("T_ProductImage")]
 
@@ -16,6 +16,6 @@ namespace OnlineShop.Domain.Entities.Product
         public int Id { get; set; }
         public string ImageUrl { get; set; }
         public int ProductId { get; set; }
-        public Product? Product { get; set; }
+        public ProductUnit? Product { get; set; }
     }
 }

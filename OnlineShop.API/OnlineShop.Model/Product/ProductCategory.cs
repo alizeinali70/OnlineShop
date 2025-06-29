@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnlineShop.Domain.Entities.Product
+namespace OnlineShop.Domain.Entities.ProductEntity
 {
     [Table("T_ProductCategory")]
     public class ProductCategory
@@ -16,8 +16,8 @@ namespace OnlineShop.Domain.Entities.Product
         [Display(Name = "ردیف")]
         public int ID { get; set; }
         [Display(Name = "نام مدل")]
-        public string Name { get; set; }
-        public ICollection<Product> Products { get; set; } = new HashSet<Product>();
+        public required string Name { get; set; }
+        public ICollection<ProductUnit> Products { get; set; } = new HashSet<ProductUnit>();
         [Display(Name = "فعال / غیرفعال")]
         public bool Is_Active { get; set; }
     }

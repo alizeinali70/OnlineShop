@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using OnlineShop.Domain.Entities.Product;
+using OnlineShop.Domain.Entities.ProductEntity;
 using OnlineShop.Domain.Entities.User;
 using System;
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace OnlineShop.Infrastructure.EfCore
         {
         }
 
-        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductUnit> Products { get; set; }
         public DbSet<ProductModel> ProductModels { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }

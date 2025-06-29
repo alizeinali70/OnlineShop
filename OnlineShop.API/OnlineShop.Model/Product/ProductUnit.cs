@@ -6,10 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnlineShop.Domain.Entities.Product
+namespace OnlineShop.Domain.Entities.ProductEntity
 {
     [Table("T_Product")]
-    public class Product
+    public class ProductUnit
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
