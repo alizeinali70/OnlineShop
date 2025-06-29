@@ -70,7 +70,7 @@ namespace Entities.Product
         [Display(Name = "مدل")]
         public int ModelId { get; set; }
         [ForeignKey(nameof(ModelId))]
-        public virtual ProductModel? ProductsModel { get; set; }
+        public virtual ProductType? ProductsModel { get; set; }
         [Display(Name = "دسته بندی")]
         public int CategoryId { get; set; }
         [ForeignKey(nameof(CategoryId))]

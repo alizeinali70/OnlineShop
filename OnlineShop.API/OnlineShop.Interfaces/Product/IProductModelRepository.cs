@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Interfaces
 {
-    public interface IProductModelRepository:IRepository<ProductModel>
+    public interface IProductModelRepository:IRepository<ProductType>
     {
-        Task<IEnumerable<ProductModel>> GetModelsByProductIdAsync(int productId);
-        Task<IEnumerable<ProductModel>> GetModelsByCategoryIdAsync(int categoryId);
-        Task<IEnumerable<ProductModel>> GetFeaturedModelsAsync(bool isFeatured);
+        Task<IEnumerable<ProductType>> GetModelsByProductIdAsync(int productId);
+        Task<IEnumerable<ProductType>> GetModelsByCategoryIdAsync(int categoryId);
+        Task<IEnumerable<ProductType>> GetFeaturedModelsAsync(bool isFeatured);
         // Add other model-specific methods if needed
     }
 }

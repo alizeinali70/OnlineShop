@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace Entities.Product
 {
-    [Table("T_ProductModel")]
-    public class ProductModel
+    [Table("T_ProductType")]
+    public class ProductType
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

@@ -1,15 +1,15 @@
-﻿using Entities.Product;
+﻿using EfCore;
+using Entities.Product;
 using Interfaces;
 using Microsoft.EntityFrameworkCore;
-
-using OnlineShop.Infrastructure.EfCore;
+using Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnlineShop.Infrastructure.Repositories.Product
+namespace Repositories.Product
 {
     public class ProductRepository : Repository<ProductUnit>, IProductRepository
     {

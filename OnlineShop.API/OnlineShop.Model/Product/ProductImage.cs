@@ -14,7 +14,7 @@ namespace Entities.Product
     {
         [Key]
         public int Id { get; set; }
-        public string ImageUrl { get; set; }
+        public string? ImageUrl { get; set; }
         public int ProductId { get; set; }
         public ProductUnit? Product { get; set; }
     }

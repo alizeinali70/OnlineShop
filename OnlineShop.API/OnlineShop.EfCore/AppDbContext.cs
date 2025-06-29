@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Entities.Product;
-using OnlineShop.Domain.Entities.User;
+using Entities.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnlineShop.Infrastructure.EfCore
+namespace EfCore
 {
     public class AppDbContext : DbContext
     {
@@ -17,7 +17,7 @@ namespace OnlineShop.Infrastructure.EfCore
         }
 
         public DbSet<ProductUnit> Products { get; set; }
-        public DbSet<ProductModel> ProductModels { get; set; }
+        public DbSet<ProductType> ProductTypes { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<Role> Roles { get; set; }

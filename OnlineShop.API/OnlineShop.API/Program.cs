@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using System;
-using OnlineShop.Infrastructure.EfCore;
+using EfCore;
 
 var builder = WebApplication.CreateBuilder(args);
 

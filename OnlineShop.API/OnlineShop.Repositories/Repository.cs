@@ -1,13 +1,13 @@
 ﻿using Interfaces;
 using Microsoft.EntityFrameworkCore;
-using OnlineShop.Infrastructure.EfCore;
+using EfCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnlineShop.Infrastructure.Repositories
+namespace Repositories
 {
     public class Repository<T> : IRepository<T> where T : class
     {
