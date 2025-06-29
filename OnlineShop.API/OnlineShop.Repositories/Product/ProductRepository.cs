@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using OnlineShop.Application.Interfaces.ProductInterface;
-using OnlineShop.Domain.Entities.ProductEntity;
+﻿using Entities.Product;
+using Interfaces;
+using Microsoft.EntityFrameworkCore;
+
 using OnlineShop.Infrastructure.EfCore;
 using System;
 using System.Collections.Generic;

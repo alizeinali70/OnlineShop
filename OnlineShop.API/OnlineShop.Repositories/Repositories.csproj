@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OnlineShop.EfCore\OnlineShop.Infrastructure.EfCore.csproj" />
-    <ProjectReference Include="..\OnlineShop.Interfaces\OnlineShop.Application.Interfaces.csproj" />
+    <ProjectReference Include="..\OnlineShop.EfCore\EfCore.csproj" />
+    <ProjectReference Include="..\OnlineShop.Interfaces\Interfaces.csproj" />
   </ItemGroup>
 
 </Project>

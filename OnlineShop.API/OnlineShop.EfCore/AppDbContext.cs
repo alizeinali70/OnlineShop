@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using OnlineShop.Domain.Entities.ProductEntity;
+using Entities.Product;
 using OnlineShop.Domain.Entities.User;
 using System;
 using System.Collections.Generic;

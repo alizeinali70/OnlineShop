@@ -1,11 +1,11 @@
-﻿using OnlineShop.Domain.Entities.ProductEntity;
+﻿using Entities.Product;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnlineShop.Application.Interfaces.ProductInterface
+namespace Interfaces.Product
 {
     public interface IProductCategoryRepository : IRepository<ProductCategory>
     {

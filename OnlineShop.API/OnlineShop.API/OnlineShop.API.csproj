@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OnlineShop.EfCore\OnlineShop.Infrastructure.EfCore.csproj" />
+    <ProjectReference Include="..\OnlineShop.EfCore\EfCore.csproj" />
   </ItemGroup>
 
 </Project>

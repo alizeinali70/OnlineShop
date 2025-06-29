@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnlineShop.Domain.Entities.ProductEntity
+namespace Entities.Product
 {
     [Table("T_ProductImage")]
 

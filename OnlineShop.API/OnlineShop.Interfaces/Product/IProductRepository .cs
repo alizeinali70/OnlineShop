@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Entities.Product;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using OnlineShop.Domain.Entities.ProductEntity;
 
-namespace OnlineShop.Application.Interfaces.ProductInterface
+
+namespace Interfaces
 {
     public interface IProductRepository: IRepository<ProductUnit>
     {

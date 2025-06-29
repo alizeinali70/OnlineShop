@@ -7,11 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="HomePage\" />
     <Folder Include="User\" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OnlineShop.Model\OnlineShop.Domain.Entities.csproj" />
+    <ProjectReference Include="..\OnlineShop.Model\Entities.csproj" />
   </ItemGroup>
 
 </Project>
